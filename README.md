@@ -1,5 +1,6 @@
 # nimiq-shop-directory
 
+A simple demo for making a directory with Supabase
 ## Build Setup
 
 ```bash
