@@ -7,6 +7,10 @@
         <v-card-text>
           <p>{{ shop.description }}</p>
           <p>
+            Ships to:
+            <span v-for="country in shop.shippingCountries">{{ country }} &ThickSpace;</span>
+          </p>
+          <p>
             Call:
             <a :href="'tel:' + shop.phone">{{ shop.phone }}</a>
           </p>
@@ -46,6 +50,7 @@ interface location {
 interface shop {
   id: string, // uuid v4
   name: string,
+  image: string, // http link
   type: number, // 1: online-only, 2: retail, 3: both
   phone: number,
   email: string,
