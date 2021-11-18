@@ -2,9 +2,7 @@
   <v-row justify="center" align="center">
     <v-col v-for="shop in data" :key="shop.id">
       <v-card>
-        <v-img
-          src="https://images.unsplash.com/photo-1473187983305-f615310e7daa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80"
-        />
+        <v-img :src="shop.image" />
         <v-card-title>{{ shop.name }}</v-card-title>
         <v-card-text>
           <p>{{ shop.description }}</p>
