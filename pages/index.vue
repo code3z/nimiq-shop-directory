@@ -22,7 +22,7 @@
         <v-card-actions>
           <v-btn :href="shop.website" target="_blank">Shop Now</v-btn>
           <v-btn
-            v-for="shopInstance in toArray(shop.location)"
+            v-for="shopInstance in toArray(shop.location, shop.type)"
             :key="shopInstance.latitude"
             :href="'https://arcanemaps.com#place--' + shopInstance.latitude + ',' + shopInstance.longitude"
             target="_blank"
@@ -51,7 +51,7 @@ interface shop {
   id: string, // uuid v4
   name: string,
   image: string, // http link
-  type: number, // 1: online-only, 2: retail, 3: both
+  type: 1 | 2 | 3, // 1: online-only, 2: retail, 3: both
   phone: number,
   email: string,
   website: string,
@@ -68,7 +68,10 @@ const callback = (response: PostgrestResponse<any>) => {
 }
 const route = useRoute()
 
-function toArray(data: any) {
+function toArray(data: any, shopType: number) {
+  if (shopType == 1 || data == null) {
+    return []
+  }
   if (Array.isArray(data)) {
     return data
   } else {
